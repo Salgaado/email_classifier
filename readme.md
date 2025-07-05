@@ -2,6 +2,8 @@
 
 Uma aplicação web simples para classificar emails como **Produtivo** ou **Improdutivo** e gerar respostas automáticas usando a API da OpenAI.
 
+"Temos Reuniões que poderiam ser Emails, e Emails que poderiam ser Reuniões. Bora classificar isso?"
+
 
 ##  Demo
 

@@ -11,13 +11,14 @@
     <h1>Classifique seu Email</h1>
 
     <form id="email-form">
-      <textarea id="texto" placeholder="Cole aqui o texto do email..." rows="8"></textarea>
+      <textarea id="texto" placeholder="Seu email aqui" rows="8"></textarea>
       <div>
         <label for="file-input">Ou faça upload de um arquivo:</label>
         <input type="file" id="file-input" accept=".txt,.pdf">
         <button type="button" id="remove-file" hidden>Remover arquivo</button>
       </div>
       <button type="submit">Processar</button>
+      <div class="spinner" id="spinner"></div>
     </form>
 
     <div id="resultado" class="hidden">

@@ -2,6 +2,7 @@ const form = document.getElementById('email-form');
 const fileInput = document.getElementById('file-input');
 const textoInputEl = document.getElementById('texto');
 const removeButton = document.getElementById('remove-file');
+const spinner = document.getElementById('spinner');
 
 // Quando o usuário seleciona um arquivo, desabilita textarea e mostra botão de remover
 fileInput.addEventListener('change', () => {
@@ -26,11 +27,7 @@ form.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const textoInput = textoInputEl.value.trim();
-
-  console.log(
-    'file count =', fileInput.files.length,
-    '| texto length =', textoInput.length
-  );
+  
 
   const formData = new FormData();
   if (fileInput.files.length) {
@@ -40,6 +37,8 @@ form.addEventListener('submit', async (e) => {
   } else {
     return alert('Insira texto ou faça upload de um arquivo .txt ou .pdf');
   }
+
+  spinner.style.display = 'block';
 
   // Indicar carregamento
   document.getElementById('categoria').textContent = 'Processando…';
@@ -59,5 +58,7 @@ form.addEventListener('submit', async (e) => {
   } catch (err) {
     document.getElementById('categoria').textContent = 'Erro';
     document.getElementById('resposta').textContent = err.message;
+  }finally {
+    spinner.style.display = 'none';
   }
 });

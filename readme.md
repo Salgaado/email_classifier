@@ -86,4 +86,34 @@ email-classifier/
   Use ferramentas como Postman ou cURL para testar a API diretamente.
 
 
+  # 🚀 Próximos Passos & Ideias de Evolução
+  ### Integração com Provedores de E-mail
+    Conectar via OAuth a Gmail, Outlook ou IMAP, para que o app sincronize sua caixa de entrada automaticamente.
+  ### Filtragem Avançada e Priorizações
+    Aprender com seu comportamento: destacar e-mails de remetentes frequentes ou contatos VIP.
+    “Snooze” e lembretes para e-mails que você queira rever mais tarde.
+  ### Resumos Automáticos de Thread
+    Quando um e-mail fizer parte de uma conversa longa, gerar um breve resumo para você entender o contexto em um relance.
+  ### Templates Personalizáveis
+    Permitir que o usuário salve respostas padrão e treine a IA para usar seu tom de voz ou assinatura personalizada.
+  ### Análise de Anexos
+    Extrair texto de PDFs, imagens (OCR) ou planilhas, e incluir isso na classificação e na resposta.
+  ### Dashboard de Métricas
+    Exibir estatísticas de e-mails recebidos, tempos de resposta, porcentagem de produtivos vs. improdutivos e tendências ao longo do tempo.
+  ### Mobile App ou PWA
+    Transformar o frontend em uma Progressive Web App com notificações push para alertas de e-mails prioritários. 
+  ### Suporte Multilíngue
+    Detectar o idioma do e-mail e gerar respostas adequadas em Português, Inglês, Espanhol, etc.
+  ### Chatbot para ChatOps
+    Integre um chatbot (Slack, Teams) que, ao receber o link de um e-mail, retorne imediatamente sua classificação e uma resposta sugerida.
+  ### Automação de Fluxos
+    Conectar com Zapier, Make ou outras plataformas de automação para acionar workflows (por ex., mover e-mails improdutivos para pastas específicas ou criar tarefas no Trello).
+  ### Controle de Privacidade & Compliance
+    Adicionar camadas de criptografia end-to-end e configurações de retenção de dados para atender a políticas de privacidade e compliance de empresas.
+  ### Modelos Customizados & Fine-Tuning
+    Permitir que o usuário faça fine-tuning de um modelo leve com seu próprio histórico de e-mails, para personalizar ainda mais as classificações e respostas.
+
+
+
+
 

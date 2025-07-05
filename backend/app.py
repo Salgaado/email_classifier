@@ -5,13 +5,13 @@ from flask_cors import CORS
 from PyPDF2 import PdfReader
 from dotenv import load_dotenv
 
-# Carrega variáveis de ambiente
+
 load_dotenv()
 openai.api_key = os.getenv("OPENAI_API_KEY")
 if not openai.api_key:
     raise RuntimeError("Faltando OPENAI_API_KEY no .env")
 
-# Inicializa Flask
+
 app = Flask(__name__)
 CORS(app)
 
@@ -27,7 +27,7 @@ def handle_exception(e):
     return jsonify(error=str(e)), 500
 
 def classify_and_respond(text: str):
-    # 1) Classificação com OpenAI GPT
+
     classify_prompt = (
         "Classifique este email nas categorias 'Produtivo' ou 'Improdutivo', respondendo apenas com a categoria, sem explicações.\n\n"
         f"\"\"\"{text}\"\"\""
@@ -41,7 +41,7 @@ def classify_and_respond(text: str):
     if category not in ["Produtivo", "Improdutivo"]:
         category = "Produtivo"
 
-    # 2) Geração de resposta com OpenAI GPT
+
     reply_prompt = (
         f"Você é um assistente de atendimento ao cliente. Este email foi classificado como {category}. "
         "Gere uma resposta curta, educada e objetiva baseada no conteúdo abaixo, sem repetir o texto original:\n\n"
@@ -59,7 +59,7 @@ def classify_and_respond(text: str):
 @app.route('/processar', methods=['POST'])
 def process_email():
     text = None
-    # Recebe arquivo TXT ou PDF
+
     if 'file' in request.files:
         file = request.files['file']
         name = file.filename.lower()
@@ -71,7 +71,7 @@ def process_email():
             text = "\n".join(pages)
         else:
             return jsonify(error="Formato não suportado"), 400
-    # Recebe texto direto via form
+
     elif request.form.get('texto'):
         text = request.form.get('texto')
 

@@ -1,10 +1,22 @@
+const toggleBtn = document.getElementById('theme-toggle');
+const body = document.body;
+
+const saved = localStorage.getItem('theme') || 'light';
+body.classList.toggle('dark-theme', saved === 'dark');
+toggleBtn.textContent = saved === 'dark' ? '🌙' : '☀️';
+toggleBtn.addEventListener('click', () => {
+
+  const isDark = body.classList.toggle('dark-theme');
+  toggleBtn.textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
 const form = document.getElementById('email-form');
 const fileInput = document.getElementById('file-input');
 const textoInputEl = document.getElementById('texto');
 const removeButton = document.getElementById('remove-file');
 const spinner = document.getElementById('spinner');
 
-// Quando o usuário seleciona um arquivo, desabilita textarea e mostra botão de remover
 fileInput.addEventListener('change', () => {
   if (fileInput.files.length > 0) {
     textoInputEl.disabled = true;
@@ -15,20 +27,15 @@ fileInput.addEventListener('change', () => {
   }
 });
 
-// Botão para remover o arquivo selecionado e reativar textarea
 removeButton.addEventListener('click', () => {
   fileInput.value = '';
   textoInputEl.disabled = false;
   removeButton.hidden = true;
 });
 
-// Listener de submit
 form.addEventListener('submit', async (e) => {
   e.preventDefault();
-
   const textoInput = textoInputEl.value.trim();
-  
-
   const formData = new FormData();
   if (fileInput.files.length) {
     formData.append('file', fileInput.files[0]);
@@ -37,10 +44,8 @@ form.addEventListener('submit', async (e) => {
   } else {
     return alert('Insira texto ou faça upload de um arquivo .txt ou .pdf');
   }
-
   spinner.style.display = 'block';
 
-  // Indicar carregamento
   document.getElementById('categoria').textContent = 'Processando…';
   document.getElementById('resposta').textContent = '';
   document.getElementById('resultado').classList.remove('hidden');

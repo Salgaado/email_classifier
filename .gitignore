@@ -1,14 +1,5 @@
-
-# Python
 __pycache__/
 *.py[cod]
 .env
-
-# Node / frontend
-node_modules/
 .DS_Store
-
-# Editor
-.vscode/
-EOF
 

@@ -7,19 +7,28 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header style="text-align: right; padding: 1rem;">
+      <header>
+        <button id="theme-toggle" class="theme-toggle-btn">☀️</button>
+      </header>
+  </header>
   <div class="container">
     <h1>Classifique seu Email</h1>
 
-    <form id="email-form">
-      <textarea id="texto" placeholder="Seu email aqui" rows="8"></textarea>
-      <div>
-        <label for="file-input">Ou faça upload de um arquivo:</label>
-        <input type="file" id="file-input" accept=".txt,.pdf">
-        <button type="button" id="remove-file" hidden>Remover arquivo</button>
-      </div>
-      <button type="submit">Processar</button>
-      <div class="spinner" id="spinner"></div>
-    </form>
+  <form id="email-form">
+    <div class="textarea-wrapper">
+      <textarea id="texto" placeholder="Cole o texto do email aqui ou anexe um arquivo (.txt/.pdf)" rows="8"></textarea>
+      <label for="file-input" class="file-btn" title="Upload de arquivo">
+        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v13m0-13 4 4m-4-4-4 4"/>
+        </svg>
+      </label>
+    </div>
+    <input type="file" id="file-input" accept=".txt,.pdf" hidden>
+    <button type="button" id="remove-file" hidden>Remover arquivo</button>
+    <button type="submit">Processar</button>
+    <div class="spinner" id="spinner"></div>
+  </form>
 
     <div id="resultado" class="hidden">
       <h2>Categoria: <span id="categoria"></span></h2>

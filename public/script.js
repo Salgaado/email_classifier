@@ -1,0 +1,63 @@
+const form = document.getElementById('email-form');
+const fileInput = document.getElementById('file-input');
+const textoInputEl = document.getElementById('texto');
+const removeButton = document.getElementById('remove-file');
+
+// Quando o usuário seleciona um arquivo, desabilita textarea e mostra botão de remover
+fileInput.addEventListener('change', () => {
+  if (fileInput.files.length > 0) {
+    textoInputEl.disabled = true;
+    removeButton.hidden = false;
+  } else {
+    textoInputEl.disabled = false;
+    removeButton.hidden = true;
+  }
+});
+
+// Botão para remover o arquivo selecionado e reativar textarea
+removeButton.addEventListener('click', () => {
+  fileInput.value = '';
+  textoInputEl.disabled = false;
+  removeButton.hidden = true;
+});
+
+// Listener de submit
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const textoInput = textoInputEl.value.trim();
+
+  console.log(
+    'file count =', fileInput.files.length,
+    '| texto length =', textoInput.length
+  );
+
+  const formData = new FormData();
+  if (fileInput.files.length) {
+    formData.append('file', fileInput.files[0]);
+  } else if (textoInput) {
+    formData.append('texto', textoInput);
+  } else {
+    return alert('Insira texto ou faça upload de um arquivo .txt ou .pdf');
+  }
+
+  // Indicar carregamento
+  document.getElementById('categoria').textContent = 'Processando…';
+  document.getElementById('resposta').textContent = '';
+  document.getElementById('resultado').classList.remove('hidden');
+
+  try {
+    const res = await fetch('http://127.0.0.1:5000/processar', {
+      method: 'POST',
+      body: formData
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+
+    document.getElementById('categoria').textContent = data.categoria;
+    document.getElementById('resposta').textContent = data.resposta;
+  } catch (err) {
+    document.getElementById('categoria').textContent = 'Erro';
+    document.getElementById('resposta').textContent = err.message;
+  }
+});

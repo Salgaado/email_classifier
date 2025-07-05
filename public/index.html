@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Classificador de Emails</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Classifique seu Email</h1>
+
+    <form id="email-form">
+      <textarea id="texto" placeholder="Cole aqui o texto do email..." rows="8"></textarea>
+      <div>
+        <label for="file-input">Ou faça upload de um arquivo:</label>
+        <input type="file" id="file-input" accept=".txt,.pdf">
+        <button type="button" id="remove-file" hidden>Remover arquivo</button>
+      </div>
+      <button type="submit">Processar</button>
+    </form>
+
+    <div id="resultado" class="hidden">
+      <h2>Categoria: <span id="categoria"></span></h2>
+      <h3>Resposta sugerida:</h3>
+      <p id="resposta"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

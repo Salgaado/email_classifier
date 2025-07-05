@@ -47,7 +47,7 @@ form.addEventListener('submit', async (e) => {
   document.getElementById('resultado').classList.remove('hidden');
 
   try {
-    const res = await fetch('http://127.0.0.1:5000/processar', {
+    const res = await fetch('https://email-classifier-2-9xp8.onrender.com/processar', {
       method: 'POST',
       body: formData
     });
